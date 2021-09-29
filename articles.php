@@ -95,9 +95,10 @@ $commentaires->execute(array($id));
 	<img src="miniatures/<?= $article['id'] ?>.png"/>
 	<p><?= $contenu ?></p>
 	</div>
+	<HR size=2 align=center width="100%" />
 
-
-	<div align="center" id="like">
+<div id="membreaction">
+	<div id="likedislike" align="right" id="like">
 	<a href="php/action.php?t=1&id=<?= $id ?>"> J'aime </a>(<?= $likes ?>)
 	<a href="php/action.php?t=2&id=<?= $id ?>"> Je n'aime pas </a>
 	(<?= $dislikes ?>)
@@ -110,7 +111,7 @@ $commentaires->execute(array($id));
 		<br />
 		<input type="submit" name="submit_com" value="Envoyer">
 		</div>
-	<HR size=2 align=center width="100%" />
+	
 
 
 	</form>
@@ -118,14 +119,20 @@ $commentaires->execute(array($id));
 	<?php while($c = $commentaires->fetch()) { ?>
 		<div id="comment">
 		<ul type="none">
-		<li><h3><?= $c['alias1'] ?></h3>
-			<p><?= $c['date_time'] ?><p>
+			<span id="pseudo">
+		<li><h3 align="left"><?= $c['alias1'] ?></h3>
+			<p align="left"><?= $c['date_time'] ?><p>
+			</span>
 			<br />
-			<h4 id="contenucom" align="center"><?= $c['commentaire'] ?></h4> <br /></li>
+			<h4 id="contenucom" align="left"><?= $c['commentaire'] ?></h4> <br /></li>
 		</ul>
 		</div>
+	</p>
+
 
 	<?php } ?>
+
+	</div>
 	
 	
 

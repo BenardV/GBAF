@@ -4,6 +4,7 @@
 {
 	width: auto;
 	border: red solid;
+	margin: 10%;
 }
 
 #gbaf
@@ -24,10 +25,26 @@
 {
 	border: solid 1px red;
 	border-radius: 15px;
-	width: 40%;
+	width: 100%;
 }
 
 #contenucom
 {
 	justify-content: center;
+}
+
+#membreaction
+{
+	border: solid black;
+}
+
+#pseudo
+{
+	display: block;
+	justify-content: center;
+}
+
+#likedislike
+{
+	align-items: right;
 }
