@@ -1,0 +1,64 @@
+
+
+
+#info
+{
+	text-align: right;
+	
+
+}
+
+#gbaf
+{
+	display: block;
+	position: absolute;
+	top : 2px;
+	bottom :2px;
+	width: 10%;
+	height: auto;
+}
+
+#illu 
+{
+	width: 100%;
+	height: auto;
+	border-radius: 15%;
+}
+
+#logoacteur
+{
+	width: 15%;
+	height: auto;
+	border-radius: 25%;
+	border: solid red 1px;
+}
+ 
+.acteurs ul
+{
+	width: auto;
+}
+
+.acteurs li
+{
+	justify-content: center;
+	padding: auto;
+	margin: auto;
+	width: auto;
+	margin-top: 10px;
+	border-radius: 5%;
+}
+@media screen and (max-device-width: 768px) 
+{
+	#logoacteur
+	{
+		width: 80%;
+		height: 100%px;
+	}
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) 
+{
+	#logoacteur
+	{
+		width: 25%;
+	}
+}

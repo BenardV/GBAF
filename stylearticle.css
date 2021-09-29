@@ -1,0 +1,33 @@
+
+
+#acteur 
+{
+	width: auto;
+	border: red solid;
+}
+
+#gbaf
+{
+	display: block;
+	top : 2px;
+	bottom :2px;
+	width: 10%;
+	height: auto;
+}
+
+#like
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#comment li
+{
+	border: solid 1px red;
+	border-radius: 15px;
+	width: 40%;
+}
+
+#contenucom
+{
+	justify-content: center;
+}
