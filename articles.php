@@ -39,7 +39,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $commentaires = $bdd->prepare
-('SELECT *, membres.prenom as `alias1` FROM commentaires LEFT JOIN membres ON commentaires.id_membre = membres.id WHERE id_article = ?');
+('SELECT *, membres.prenom as `alias1`, DATE_FORMAT(date_time, "%d/%m/%y %h:%i") as `date_com` FROM commentaires LEFT JOIN membres ON commentaires.id_membre = membres.id WHERE id_article = ?');
 $commentaires->execute(array($id));
 
 
@@ -121,7 +121,7 @@ $commentaires->execute(array($id));
 		<ul type="none">
 			<span id="pseudo">
 		<li><h3 align="left"><?= $c['alias1'] ?></h3>
-			<p align="left"><?= $c['date_time'] ?><p>
+			<p align="left"><?= date("d/m/Y H:i",strtotime($c['date_time']) ) ?><p>
 			</span>
 			<br />
 			<h4 id="contenucom" align="left"><?= $c['commentaire'] ?></h4> <br /></li>

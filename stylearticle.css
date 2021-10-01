@@ -36,6 +36,10 @@
 #membreaction
 {
 	border: solid black;
+	margin-left: 30px;
+	margin-right: 30px;
+	border-radius: 5%;
+	
 }
 
 #pseudo
@@ -46,5 +50,6 @@
 
 #likedislike
 {
-	align-items: right;
+	display: block;
+	margin: 40px;
 }

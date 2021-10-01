@@ -16,6 +16,14 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 {
+
+
+if(empty($_SESSION['id']))
+{
+	header('location : connex.php');
+}
+
+
 	$getid = intval($_SESSION['id']);
 	$requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
 	$requser->execute(array($getid));
