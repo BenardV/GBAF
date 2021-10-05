@@ -25,8 +25,14 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         	{
         		$requser = $bdd->prepare('UPDATE membres SET motdepasse = ? ');
         		$requser->execute(array($newmdp));
+        		header("Location: connex.php");
         	}
+ 			else
+ 			{
+ 				$erreur = "Réponse secréte non valide";
+ 			}
 		}
+		
 	}
     
 
@@ -60,7 +66,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 <body>
 	<div class="formulaire" align="center">
 		 <img src="logo/logo_gbaf" alt="gbaf" id="gbaf">
-	<form method="POST" action="">
+	<form method="POST">
 		<h2><?php echo $userinfo ['question']; ?></h2>
 		<input type="text" name="reponse" placeholder = "Réponse secréte" />
 		<br /> <br />
@@ -68,6 +74,12 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		<br /> <br />
 		<input type="submit" name="mdpvalid" value="Changer le mot de passe" />
 		<br /> <br /> 
+		<?php 
+            if (isset($erreur)) 
+            {
+                echo '<font color="red">' .$erreur . "</fonts>";
+            }
+           ?>
 		<?php } ?>
 
 

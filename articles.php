@@ -47,7 +47,7 @@ $commentaires->execute(array($id));
 	{
 		if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])) 
 		{
-			$commentaire = htmlspecialchars($_POST['commentaire']);
+			$commentaires = htmlspecialchars($_POST['commentaire']);
 			$sessionid = $_SESSION['id'];
 
 			$bdd = new PDO('mysql:host=localhost;dbname=espace_membre', 'root', '');
@@ -58,10 +58,30 @@ $commentaires->execute(array($id));
 			$requser->execute(array($sessionid));
 			$userinfo = $requser->fetch();
 			$sessionid = $userinfo ['id'];
+			$getid = (int) $_GET['id'];
+
+			$check_com = $bdd->prepare('SELECT id FROM commentaires WHERE id_article = ? AND id_membre = ?');
+			$check_com->execute(array($getid, $sessionid));
+
+			if($check_com->rowCount() == 1)
+			{
+				$del = $bdd->prepare('DELETE FROM commentaires WHERE id_article = ? AND id_membre = ?');
+				$del->execute(array($getid, $sessionid));
+
+				$ins = $bdd->prepare('INSERT INTO commentaires (commentaire, id_article, id_membre) VALUES (?, ?, ?) ');
+				$ins->execute(array($commentaires, $id,$sessionid));
+				header("Refresh:1");
 
 
-			$ins = $bdd->prepare('INSERT INTO commentaires (commentaire, id_article, id_membre) VALUES (?, ?, ?) ');
-			$ins->execute(array($commentaire, $id,$sessionid));
+			
+			}
+			else
+			{
+				$ins = $bdd->prepare('INSERT INTO commentaires (commentaire, id_article, id_membre) VALUES (?, ?, ?) ');
+				$ins->execute(array($commentaires, $id,$sessionid));
+				header("Refresh:1");
+			}
+			
 			 
 			
 		}
@@ -119,15 +139,14 @@ $commentaires->execute(array($id));
 	<?php while($c = $commentaires->fetch()) { ?>
 		<div id="comment">
 		<ul type="none">
-			<span id="pseudo">
+			<span id="pseudo"> 
 		<li><h3 align="left"><?= $c['alias1'] ?></h3>
-			<p align="left"><?= date("d/m/Y H:i",strtotime($c['date_time']) ) ?><p>
+			<p align="left"><?= date("d/m/Y H:i",strtotime($c['date_time']) ) ?></p>
 			</span>
 			<br />
 			<h4 id="contenucom" align="left"><?= $c['commentaire'] ?></h4> <br /></li>
 		</ul>
 		</div>
-	</p>
 
 
 	<?php } ?>

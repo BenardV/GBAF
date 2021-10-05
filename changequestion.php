@@ -26,6 +26,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         	
         		$requser = $bdd->prepare('UPDATE membres SET question = ?, reponse = ?  WHERE id = ? ');
         		$requser->execute(array($nquestion,$nreponse,$_SESSION['id']));
+        		header("Location: profil.php");
         	
 		}
 	}

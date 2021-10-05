@@ -21,6 +21,11 @@ if(isset($_POST['formconnexion']))
             $_SESSION ['prenom'] = $userinfo['prenom'];
             header("Location: index.php");
         }
+        else
+        {
+            $erreur = "Pseudo ou mot de passe incorrect";
+        }
+        
     }
 }
 ?>
@@ -56,7 +61,13 @@ if(isset($_POST['formconnexion']))
             <a href="insc.php">Inscription</a>
             <br />
             <a href="pseudo.php">Mot de passe oublié ?</a>
-            <br /> <br /> 
+            <br /> <br />
+           <?php 
+            if (isset($erreur)) 
+            {
+                echo '<font color="red">' .$erreur . "</fonts>";
+            }
+            ?>
          </div>     
    </body>
 </html>

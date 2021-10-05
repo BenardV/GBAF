@@ -41,7 +41,6 @@
 .acteurs li
 {
 	justify-content: center;
-	padding: auto;
 	margin: auto;
 	width: auto;
 	margin-top: 10px;
@@ -52,7 +51,7 @@
 	#logoacteur
 	{
 		width: 80%;
-		height: 100%px;
+		height: 100%;
 	}
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) 

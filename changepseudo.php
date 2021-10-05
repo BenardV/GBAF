@@ -23,6 +23,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         	
         		$requser = $bdd->prepare('UPDATE membres SET pseudo = ? WHERE id = ? ');
         		$requser->execute(array($nouveaupseudo,$_SESSION['id']));
+        		header("Location: connex.php");
 
 		}
 	}
